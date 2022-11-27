@@ -23,7 +23,7 @@ export class Usercontroller {
   @Get(':id')
   async getUserById(@Param('id') userId: string): Promise<IUserEntity> {
     try {
-      return await this.service.getUserBYId(userId);
+      return await this.service.getUserById(userId);
     } catch (err) {
       console.log(err);
     }

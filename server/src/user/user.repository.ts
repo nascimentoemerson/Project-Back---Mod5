@@ -26,7 +26,7 @@ export class UserRepository {
     return DeleteUser;
   }
 
-  async findAllUser(): Promise<IUserEntity> {
+  async findAllUsers(): Promise<IUserEntity> {
     const AllUser = await this.prisma.user.findMany();
     return AllUser;
   }
