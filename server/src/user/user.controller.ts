@@ -6,13 +6,17 @@ import {
   Param,
   Patch,
   Post,
+  Res,
+  BadRequestException,
 } from '@nestjs/common';
+
 import { IUserEntity } from './entities/user.entity';
 import { PartialUserInputDTO } from './services/dto/partialUserInput.dto';
 import { UserInputDTO } from './services/dto/userInput.dto';
 import { UserService } from './services/user.service';
+import { Response } from 'express';
 
-@Controller()
+@Controller('user')
 export class Usercontroller {
   constructor(private service: UserService) {}
 
@@ -24,17 +28,20 @@ export class Usercontroller {
   @Post()
   async createUSer(
     @Body() { cpf, email, password, name, role }: UserInputDTO,
-  ): Promise<IUserEntity> {
+    @Res() response: Response,
+  ) {
     try {
-      return await this.service.createUser({
+      const result = await this.service.createUser({
         cpf,
         email,
         password,
         name,
         role,
       });
+      response.status(201).send(result);
     } catch (error) {
       console.log(error);
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -62,5 +69,4 @@ export class Usercontroller {
       console.log(error);
     }
   }
-
 }
