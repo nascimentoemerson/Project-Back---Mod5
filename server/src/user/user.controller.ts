@@ -17,16 +17,8 @@ export class Usercontroller {
   constructor(private service: UserService) {}
 
   @Get()
-  async getAllUser(): Promise<IUserEntity[]> {
+  async getAllUsers(): Promise<IUserEntity[]> {
     return await this.service.getAllUsers();
-  }
-  @Get(':id')
-  async getUserById(@Param('id') userId: string): Promise<IUserEntity> {
-    try {
-      return await this.service.getUserById(userId);
-    } catch (err) {
-      console.log(err);
-    }
   }
 
   @Post()
@@ -70,4 +62,5 @@ export class Usercontroller {
       console.log(error);
     }
   }
+
 }

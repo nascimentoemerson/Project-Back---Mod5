@@ -1,14 +1,15 @@
 import { IUserEntity } from './entities/user.entity';
 import { PartialUserInputDTO } from './services/dto/partialUserInput.dto';
-import { UserInputDTO } from './services/dto/userInput.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UserRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async createUser(user: UserInputDTO): Promise<IUserEntity> {
-    const CreateUser = await this.prisma.user.create({ data: user });
-    return CreateUser;
+  async createUser(user: IUserEntity): Promise<IUserEntity> {
+    const CreatedUser = await this.prisma.user.create({ data: user });
+    return CreatedUser;
   }
 
   async updateUser(user: PartialUserInputDTO): Promise<IUserEntity> {
@@ -26,7 +27,7 @@ export class UserRepository {
     return DeleteUser;
   }
 
-  async findAllUsers(): Promise<IUserEntity> {
+  async findAllUsers(): Promise<IUserEntity[]> {
     const AllUser = await this.prisma.user.findMany();
     return AllUser;
   }

@@ -3,7 +3,9 @@ import { UserInputDTO } from './dto/userInput.dto';
 import { randomUUID } from 'node:crypto';
 import { PartialUserInputDTO } from './dto/partialUserInput.dto';
 import { UserRepository } from '../user.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
@@ -21,10 +23,9 @@ export class UserService {
     return updatedUser;
   }
 
-  async getAllUsers(): Promise<IUserEntity> {
-    return await this.userRepository.findAllUsers()
+  async getAllUsers(): Promise<IUserEntity[]> {
+    return await this.userRepository.findAllUsers();
   }
-
   async deleteUserById(userId: string): Promise<boolean> {
     try {
       await this.userRepository.deleteUser(userId);
@@ -40,5 +41,3 @@ export class UserService {
     return foundUser;
   }
 }
-
-
