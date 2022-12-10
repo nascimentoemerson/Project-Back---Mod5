@@ -5,9 +5,10 @@ import { Usercontroller } from './user/user.controller';
 import { UserRepository } from './user/user.repository';
 import { MoviesModule } from './movies/movies.module';
 import { ProfileModule } from './profile/profile.module';
+import { GenresModule } from './genres/genres.module';
 
 @Module({
-  imports: [DatabaseModule, MoviesModule, ProfileModule],
+  imports: [DatabaseModule, MoviesModule, ProfileModule, GenresModule],
   controllers: [Usercontroller],
   providers: [UserService, UserRepository],
 })
