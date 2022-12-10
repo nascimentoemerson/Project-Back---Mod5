@@ -1,4 +1,4 @@
-import { BadGatewayException, InternalServerErrorException, UnauthorizedException } from "@nestjs/common"
+import { BadRequestException, InternalServerErrorException, UnauthorizedException } from "@nestjs/common"
 import { Exception } from "./IException"
 
 export enum Exceptions {
@@ -11,7 +11,7 @@ export enum Exceptions {
 
 export function HandleException({ message, exception }: Exception) {
     if (exception === Exceptions.InvalidData || exception === Exceptions.NotFoundData) {
-        throw new BadGatewayException(message ? message : "Invalid Data")
+        throw new BadRequestException(message ? message : "Invalid Data")
     }
     if (exception === Exceptions.DatabaseException) {
         throw new InternalServerErrorException(message ? message : "Error in database")
