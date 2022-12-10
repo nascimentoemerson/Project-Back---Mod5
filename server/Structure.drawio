@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ItKsI4qIQaQC1rmIp6Tm" name="Page-1">
-        <mxGraphModel dx="825" dy="518" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="825" dy="530" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,11 +27,11 @@
                 <mxCell id="15" value="N:N" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1.006;entryY=0.402;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="7" target="11">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Filmes&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                <mxCell id="7" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Movies&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
                     <mxGeometry x="432" y="11" width="243" height="243" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Title&lt;br&gt;CoverImageUrl&lt;br&gt;Description&lt;br&gt;Year&lt;br&gt;Nota&lt;br&gt;TrailerYoutubeUrl&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontFamily=Helvetica;fontSize=21;" vertex="1" parent="1">
-                    <mxGeometry x="494.5" y="33" width="118" height="259" as="geometry"/>
+                    <mxGeometry x="494.5" y="56" width="118" height="259" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Genres&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
                     <mxGeometry x="216" y="211" width="143" height="143" as="geometry"/>
