@@ -1,4 +1,7 @@
+import { Movie } from "src/movies/entities/movie.entity"
+
 export class CreateProfileDto {
-    Title: string
-    ImageUrl: string
+    title: string
+    imageurl: string
+    movies: Movie[]
 }

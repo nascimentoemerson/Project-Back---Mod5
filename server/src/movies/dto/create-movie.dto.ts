@@ -1,8 +1,9 @@
+import { Genre } from "src/genres/entities/genre.entity"
+
 export class CreateMovieDto {
-    Title: string
-    CoverImageUrl: string
-    Description: string
-    Year: string
+    title: string
+    genre: Genre[]
+    year: string
     note: string
-    TrailerUrl: string
+    trailerurl: string
 }
