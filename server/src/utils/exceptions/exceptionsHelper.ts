@@ -9,15 +9,15 @@ export enum Exceptions {
 
 }
 
-export function HandleException({message, exception}: Exception) {
+export function HandleException({ message, exception }: Exception) {
     if (exception === Exceptions.InvalidData || exception === Exceptions.NotFoundData) {
-        throw new BadGatewayException(message ? message: "Invalid Data")
+        throw new BadGatewayException(message ? message : "Invalid Data")
     }
     if (exception === Exceptions.DatabaseException) {
-        throw new InternalServerErrorException("Error in database")
+        throw new InternalServerErrorException(message ? message : "Error in database")
     }
-    if (exception=== Exceptions.UnauthorizedException) {
-        throw new UnauthorizedException(message? message: "You not have permissions")
+    if (exception === Exceptions.UnauthorizedException) {
+        throw new UnauthorizedException(message ? message : "You not have permissions")
     }
-  
+
 }

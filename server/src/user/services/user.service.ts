@@ -8,7 +8,7 @@ import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(private readonly userRepository: UserRepository) { }
 
   async createUser(user: UserInputDTO): Promise<IUserEntity> {
     const userEntity = { ...user, id: randomUUID() };
