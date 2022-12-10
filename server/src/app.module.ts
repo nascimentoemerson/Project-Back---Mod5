@@ -3,12 +3,11 @@ import { DatabaseModule } from './prisma/database.module';
 import { UserService } from './user/services/user.service';
 import { Usercontroller } from './user/user.controller';
 import { UserRepository } from './user/user.repository';
-import { MoviesModule } from './movies/movies.module';
-import { ProfileModule } from './profile/profile.module';
-import { GenresModule } from './genres/genres.module';
+import { SalaModule } from './sala/sala.module';
+
 
 @Module({
-  imports: [DatabaseModule, MoviesModule, ProfileModule, GenresModule],
+  imports: [DatabaseModule, SalaModule],
   controllers: [Usercontroller],
   providers: [UserService, UserRepository],
 })
