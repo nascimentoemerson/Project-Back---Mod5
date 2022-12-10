@@ -25,6 +25,14 @@ export class Usercontroller {
   async getAllUsers(): Promise<IUserEntity[]> {
     return await this.service.getAllUsers();
   }
+  @Get(':id')
+  async getUserById(@Param('id') userId: string): Promise<IUserEntity> {
+    try {
+      return await this.service.getUserById(userId);
+    } catch (error) {
+      HandleException(error);
+    }
+  }
 
   @Post()
   async createUSer(

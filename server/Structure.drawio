@@ -1,0 +1,45 @@
+<mxfile host="65bd71144e">
+    <diagram id="ItKsI4qIQaQC1rmIp6Tm" name="Page-1">
+        <mxGraphModel dx="825" dy="518" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="1:N" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="2" target="5">
+                    <mxGeometry x="-0.4132" y="9" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Users&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="24" y="40" width="143" height="143" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;span&gt;Name&lt;/span&gt;&lt;br&gt;&lt;span&gt;Email&lt;/span&gt;&lt;br&gt;&lt;span&gt;Password&lt;/span&gt;&lt;br&gt;&lt;span&gt;Cpf&lt;/span&gt;&lt;br&gt;&lt;span&gt;Role&lt;/span&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="77" width="71" height="89" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="N:N" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="5" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Profile&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="227" y="40" width="143" height="143" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Title&lt;br&gt;ImageURL&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontFamily=Helvetica;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="263" y="77" width="77" height="61" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="N:N" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1.006;entryY=0.402;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="7" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Filmes&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="432" y="11" width="243" height="243" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Title&lt;br&gt;CoverImageUrl&lt;br&gt;Description&lt;br&gt;Year&lt;br&gt;Nota&lt;br&gt;TrailerYoutubeUrl&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontFamily=Helvetica;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="494.5" y="33" width="118" height="259" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font style=&quot;font-size: 21px&quot;&gt;&lt;b&gt;Genres&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontFamily=Helvetica;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="216" y="211" width="143" height="143" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Name&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontFamily=Helvetica;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="268" y="267" width="47" height="32" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
