@@ -1,11 +1,15 @@
-import { ListaChamada } from "src/lista-chamada/entities/lista-chamada.entity"
-import { IUserEntity } from "src/user/entities/user.entity"
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 
 export class CreateSalaDto {
+    @ApiProperty()
+    @IsString()
     name: string
+    @ApiProperty()
+    @IsString()
     tema: string
+    @ApiProperty()
+    @IsString()
     assunto: string
-    estudantes: IUserEntity[]
-    professores: IUserEntity[]
-    listachamada: ListaChamada[]
+
 }

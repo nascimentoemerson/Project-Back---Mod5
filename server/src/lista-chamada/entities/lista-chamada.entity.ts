@@ -5,6 +5,6 @@ export class ListaChamada extends CreateListaChamadaDto {
     id: string;
     dataInicial: Date;
     dataFinal: Date;
-    estudantes: IUserEntity[] = [];
+    estudantes: IUserEntity[];
     dia: string;
 }

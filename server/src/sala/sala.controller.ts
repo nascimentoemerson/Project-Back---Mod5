@@ -24,11 +24,11 @@ export class SalaController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSalaDto: UpdateSalaDto) {
-    return this.salaService.update(+id, updateSalaDto);
+    return this.salaService.update(id, updateSalaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.salaService.remove(+id);
+    return this.salaService.remove(id);
   }
 }

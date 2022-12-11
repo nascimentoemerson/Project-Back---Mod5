@@ -19,12 +19,15 @@ export class ListaChamadaService {
 
     const dataFinalChamada = 2 * 60 * 1000
 
-    const listaHoje = new ListaChamada()
-      listaHoje.id = randomUUID(),
-      listaHoje.dataInicial = new Date(Date.now()),
-      listaHoje.dataFinal = new Date(Date.now() + dataFinalChamada),
-      listaHoje.estudantes = [],
-      listaHoje.dia = diaFormatado
+    const listaHoje: ListaChamada = {
+      ... createListaChamadaDto,
+      id : randomUUID(),
+      dataInicial : new Date(Date.now()),
+      dataFinal : new Date(Date.now() + dataFinalChamada),
+      estudantes :[],
+      dia: diaFormatado
+    }
+
 
     this._listaChamada.push(listaHoje)
     return Promise.resolve(listaHoje)
