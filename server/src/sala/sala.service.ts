@@ -4,23 +4,23 @@ import { UpdateSalaDto } from './dto/update-sala.dto';
 
 @Injectable()
 export class SalaService {
-  create(createSalaDto: CreateSalaDto) {
+  async create(createSalaDto: CreateSalaDto) { 
     return 'This action adds a new sala';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all sala`;
   }
 
-  findOne(id: number) {
+  async findOne(id: string) {
     return `This action returns a #${id} sala`;
   }
 
-  update(id: number, updateSalaDto: UpdateSalaDto) {
+  async update(id: number, updateSalaDto: UpdateSalaDto) {
     return `This action updates a #${id} sala`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} sala`;
   }
 }

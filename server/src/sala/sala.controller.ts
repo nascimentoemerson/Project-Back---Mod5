@@ -19,7 +19,7 @@ export class SalaController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.salaService.findOne(+id);
+    return this.salaService.findOne(id);
   }
 
   @Patch(':id')
