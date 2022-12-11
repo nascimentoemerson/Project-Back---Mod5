@@ -17,10 +17,10 @@ export class ListaChamadaService {
     const Dia = new Date(Date.now()).toISOString().slice(0, 10);
     const diaFormatado = Dia.slice(8, 10) + '/' + Dia.slice(5, 7) + '/' + Dia.slice(0, 4);
 
-    const dataFinalChamada = 10 * 60 * 1000
+    const dataFinalChamada = 2 * 60 * 1000
 
     const listaHoje = new ListaChamada()
-    listaHoje.id = randomUUID(),
+      listaHoje.id = randomUUID(),
       listaHoje.dataInicial = new Date(Date.now()),
       listaHoje.dataFinal = new Date(Date.now() + dataFinalChamada),
       listaHoje.estudantes = [],
@@ -31,7 +31,7 @@ export class ListaChamadaService {
   }
 
   async findAll() {
-    return `This action returns all listaChamada`;
+    return this._listaChamada;
   }
 
   async findOne(id: string): Promise<ListaChamada> {
