@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { SalaService } from 'src/sala/sala.service';
+import { Exception } from 'src/utils/exceptions/exception';
+import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { CreateListaChamadaDto } from './dto/create-lista-chamada.dto';
 import { UpdateListaChamadaDto } from './dto/update-lista-chamada.dto';
 import { ListaChamada } from './entities/lista-chamada.entity';
@@ -18,7 +20,7 @@ export class ListaChamadaService {
     const dataFinalChamada = 10 * 60 * 1000
 
     const listaHoje = new ListaChamada()
-     listaHoje.id = randomUUID(),
+    listaHoje.id = randomUUID(),
       listaHoje.dataInicial = new Date(Date.now()),
       listaHoje.dataFinal = new Date(Date.now() + dataFinalChamada),
       listaHoje.estudantes = [],
@@ -32,12 +34,22 @@ export class ListaChamadaService {
     return `This action returns all listaChamada`;
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} listaChamada`;
+  async findOne(id: string): Promise<ListaChamada> {
+    const listaChamadaEncontrada = this._listaChamada.find((ListaChamada) => ListaChamada.id === id)
+    return listaChamadaEncontrada
   }
 
   async update(id: number, updateListaChamadaDto: UpdateListaChamadaDto) {
     return `This action updates a #${id} listaChamada`;
+  }
+
+  async register(ListaChamadaId: string, userId: string): Promise<string> {
+    const listaChamadaEncontrada = await this.findOne((ListaChamadaId))
+    const DataAtual = new Date(Date.now())
+    if (DataAtual.getTime() > listaChamadaEncontrada.dataFinal.getTime()) {
+      throw new Exception(Exceptions.InvalidData, "Perdeu a hora")
+    }
+    return "Chamada Concluida"
   }
 
   async remove(id: number) {
