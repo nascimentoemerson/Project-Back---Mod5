@@ -19,5 +19,30 @@ model User {
   role String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  listaChamadas ListaChamada[]
+  SalaEsdutante Sala? @relation(fields: [salaEstudantesID], references: [id], name: sala estudante)
+  salaEstudantesID String?
+  SalaProfessor Sala? @relation(fields: [salaProfessoresID], references: [id])
+  salaProfessoresID String?
+}
+
+model ListaChamada {
+id: String @id @unique
+salaID String
+Sala Sala @relation(fields: [salaID], references: [id])
+dataInicial: DateTime
+dataFinal: DateTime
+estudantes: User[]
+dia: String
+}
+
+model Sala {
+id: String @id @unique
+name: String
+tema: String 
+assunto: String 
+listaChamada ListaChamada[]
+estudantes: User[] @relation(name: sala)
+professores: User[]
 }
 

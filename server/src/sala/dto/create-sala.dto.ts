@@ -4,12 +4,11 @@ import { IsString } from 'class-validator';
 export class CreateSalaDto {
     @ApiProperty()
     @IsString()
-    name: string
+    name: String
     @ApiProperty()
     @IsString()
-    tema: string
+    tema: String
     @ApiProperty()
     @IsString()
-    assunto: string
-
+    assunto: String
 }
