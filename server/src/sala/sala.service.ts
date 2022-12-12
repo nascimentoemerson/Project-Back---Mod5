@@ -7,15 +7,16 @@ import { Sala } from './entities/sala.entity';
 
 @Injectable()
 export class SalaService {
-  private _salaList: Sala[] = []
+  private _salaList: Sala[] = [];
   async create(createSalaDto: CreateSalaDto): Promise<Sala> {
     const salaCriada = {
-      ...createSalaDto, id: randomUUID(),
+      ...createSalaDto,
+      id: randomUUID(),
       estudantes: [],
       professores: [],
-      listachamada: []
-    }
-    this._salaList.push(salaCriada)
+      listachamada: [],
+    };
+    this._salaList.push(salaCriada);
     return salaCriada;
   }
 
@@ -24,26 +25,26 @@ export class SalaService {
   }
 
   async findOne(id: string): Promise<Sala> {
-    return this._salaList.find((Sala => Sala.id === id))
+    return this._salaList.find(Sala => Sala.id === id);
   }
 
   async update(id: string, updateSalaDto: UpdateSalaDto): Promise<Sala> {
     this._salaList.map((Sala, index) => {
       if (Sala.id === id) {
-        const salaModificada = Object.assign(Sala, updateSalaDto)
-        this._salaList.splice(index, 1, salaModificada)
+        const salaModificada = Object.assign(Sala, updateSalaDto);
+        this._salaList.splice(index, 1, salaModificada);
       }
-    })
-    
-    return await this.findOne(id)
+    });
+
+    return await this.findOne(id);
   }
 
   async remove(id: string): Promise<string> {
     this._salaList.map((Sala, index) => {
       if (Sala.id === id) {
-        this._salaList.splice(index, 1)
+        this._salaList.splice(index, 1);
       }
-    })
-    return Promise.resolve("Sala deletada com sucesso")
+    });
+    return Promise.resolve('Sala deletada com sucesso');
   }
 }

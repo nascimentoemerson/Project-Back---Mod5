@@ -6,10 +6,9 @@ import { UserRepository } from './user/user.repository';
 import { SalaModule } from './sala/sala.module';
 import { ListaChamadaModule } from './lista-chamada/lista-chamada.module';
 
-
 @Module({
-  imports: [DatabaseModule, SalaModule,ListaChamadaModule],
+  imports: [DatabaseModule, SalaModule, ListaChamadaModule],
   controllers: [Usercontroller],
   providers: [UserService, UserRepository],
 })
-export class AppModule { }
+export class AppModule {}

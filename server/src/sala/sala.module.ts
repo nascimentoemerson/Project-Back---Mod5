@@ -4,6 +4,6 @@ import { SalaController } from './sala.controller';
 
 @Module({
   controllers: [SalaController],
-  providers: [SalaService]
+  providers: [SalaService],
 })
 export class SalaModule {}

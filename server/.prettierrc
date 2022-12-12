@@ -1,6 +1,8 @@
 {
-  "useTabs": true,
-  "singleQuote": true,
   "trailingComma": "all",
-  "editor.formatOnSave": true
-}
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "printWidth": 80
+ }

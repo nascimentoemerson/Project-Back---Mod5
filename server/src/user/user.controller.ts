@@ -19,7 +19,7 @@ import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 
 @Controller('user')
 export class Usercontroller {
-  constructor(private service: UserService) { }
+  constructor(private service: UserService) {}
 
   @Get()
   async getAllUsers(): Promise<IUserEntity[]> {
@@ -49,7 +49,7 @@ export class Usercontroller {
       });
       response.status(201).send(result);
     } catch (error) {
-      HandleException(error)
+      HandleException(error);
     }
   }
 

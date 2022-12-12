@@ -41,7 +41,7 @@ export class ListaChamadaService {
 
   async findOne(id: string): Promise<ListaChamada> {
     const listaChamadaEncontrada = this._listaChamada.find(
-      (ListaChamada) => ListaChamada.id === id,
+      ListaChamada => ListaChamada.id === id,
     );
     return listaChamadaEncontrada;
   }

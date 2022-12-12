@@ -1,5 +1,5 @@
 import { Exceptions } from './exceptionsHelper';
 
 export class Exception {
-    constructor(readonly exception: Exceptions, readonly message?: string) { }
+  constructor(readonly exception: Exceptions, readonly message?: string) {}
 }

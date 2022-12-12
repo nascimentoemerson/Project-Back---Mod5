@@ -7,14 +7,17 @@ import { Exception } from 'src/utils/exceptions/exception';
 
 @Injectable()
 export class UserRepository {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createUser(user: IUserEntity): Promise<IUserEntity> {
     try {
       const CreatedUser = await this.prisma.user.create({ data: user });
       return CreatedUser;
     } catch (error) {
-      throw new Exception(Exceptions.DatabaseException, "Error creating user cpf or email already registered")
+      throw new Exception(
+        Exceptions.DatabaseException,
+        'Error creating user cpf or email already registered',
+      );
     }
   }
 
@@ -26,7 +29,7 @@ export class UserRepository {
       });
       return UpdateUser;
     } catch (error) {
-      throw new Exception(Exceptions.DatabaseException)
+      throw new Exception(Exceptions.DatabaseException);
     }
   }
 
