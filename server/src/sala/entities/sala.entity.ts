@@ -1,4 +1,4 @@
-import { ListaChamada } from 'src/lista-chamada/entities/lista-chamada.entity';
+import { ListaChamada } from 'src/lista-chamada/lista-chamada.entity';
 import { IUserEntity } from 'src/user/entities/user.entity';
 import { CreateSalaDto } from '../dto/create-sala.dto';
 

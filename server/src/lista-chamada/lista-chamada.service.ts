@@ -5,7 +5,7 @@ import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { CreateListaChamadaDto } from './dto/create-lista-chamada.dto';
 import { UpdateListaChamadaDto } from './dto/update-lista-chamada.dto';
-import { ListaChamada } from './entities/lista-chamada.entity';
+import { ListaChamada } from './lista-chamada.entity';
 
 @Injectable()
 export class ListaChamadaService {
@@ -41,7 +41,7 @@ export class ListaChamadaService {
 
   async findOne(id: string): Promise<ListaChamada> {
     const listaChamadaEncontrada = this._listaChamada.find(
-      ListaChamada => ListaChamada.id === id,
+      (ListaChamada) => ListaChamada.id === id,
     );
     return listaChamadaEncontrada;
   }

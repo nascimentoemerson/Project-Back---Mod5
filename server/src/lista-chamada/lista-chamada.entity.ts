@@ -1,4 +1,4 @@
-import { CreateListaChamadaDto } from '../dto/create-lista-chamada.dto';
+import { CreateListaChamadaDto } from './dto/create-lista-chamada.dto';
 import { IUserEntity } from 'src/user/entities/user.entity';
 
 export class ListaChamada extends CreateListaChamadaDto {
