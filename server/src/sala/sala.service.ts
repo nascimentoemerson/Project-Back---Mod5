@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { assignMetadata } from '@nestjs/common/decorators';
 import { randomUUID } from 'crypto';
 import { CreateSalaDto } from './dto/create-sala.dto';
 import { UpdateSalaDto } from './dto/update-sala.dto';
@@ -14,7 +13,7 @@ export class SalaService {
       id: randomUUID(),
       estudantes: [],
       professores: [],
-      listachamada: [],
+      listaChamada: [],
     };
     this._salaList.push(salaCriada);
     return salaCriada;
@@ -25,7 +24,7 @@ export class SalaService {
   }
 
   async findOne(id: string): Promise<Sala> {
-    return this._salaList.find(Sala => Sala.id === id);
+    return this._salaList.find((Sala) => Sala.id === id);
   }
 
   async update(id: string, updateSalaDto: UpdateSalaDto): Promise<Sala> {
