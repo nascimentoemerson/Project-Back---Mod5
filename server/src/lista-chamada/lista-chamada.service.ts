@@ -14,7 +14,7 @@ export class ListaChamadaService {
   async create(
     createListaChamadaDto: CreateListaChamadaDto,
   ): Promise<ListaChamada> {
-    await this.salaService.findOne(createListaChamadaDto.salaId);
+    await this.salaService.findOne(createListaChamadaDto.salaID);
 
     const Dia = new Date(Date.now()).toISOString().slice(0, 10);
     const diaFormatado =
