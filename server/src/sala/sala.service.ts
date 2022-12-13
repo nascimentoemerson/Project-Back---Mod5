@@ -1,49 +1,41 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
+import { Exception } from 'src/utils/exceptions/exception';
+import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { CreateSalaDto } from './dto/create-sala.dto';
 import { UpdateSalaDto } from './dto/update-sala.dto';
 import { Sala } from './entities/sala.entity';
+import { SalaRepository } from './sala.repository';
 
 @Injectable()
 export class SalaService {
-  private _salaList: Sala[] = [];
+  constructor(private readonly salaRepository: SalaRepository) {}
+
   async create(createSalaDto: CreateSalaDto): Promise<Sala> {
-    const salaCriada = {
-      ...createSalaDto,
-      id: randomUUID(),
-      estudantes: [],
-      professores: [],
-      listaChamada: [],
-    };
-    this._salaList.push(salaCriada);
-    return salaCriada;
+    const id = randomUUID();
+    return await this.salaRepository.criarSala(createSalaDto, id);
   }
 
   async findAll(): Promise<Sala[]> {
-    return this._salaList;
+    return await this.salaRepository.encontrarTodasSalas();
   }
 
   async findOne(id: string): Promise<Sala> {
-    return this._salaList.find((Sala) => Sala.id === id);
+    return await this.salaRepository.encontrarSalaId(id);
   }
 
-  async update(id: string, updateSalaDto: UpdateSalaDto): Promise<Sala> {
-    this._salaList.map((Sala, index) => {
-      if (Sala.id === id) {
-        const salaModificada = Object.assign(Sala, updateSalaDto);
-        this._salaList.splice(index, 1, salaModificada);
-      }
-    });
-
-    return await this.findOne(id);
+  async update(updateSalaDto: UpdateSalaDto): Promise<Sala> {
+    if (!updateSalaDto.estudantesIds && updateSalaDto.professoresIds) {
+      throw new Exception(
+        Exceptions.InvalidData,
+        'você não enviou relacões da tabela ',
+      );
+    }
+    return await this.salaRepository.atualizarSala(updateSalaDto);
   }
 
   async remove(id: string): Promise<string> {
-    this._salaList.map((Sala, index) => {
-      if (Sala.id === id) {
-        this._salaList.splice(index, 1);
-      }
-    });
-    return Promise.resolve('Sala deletada com sucesso');
+    await this.salaRepository.deletarSala(id);
+    return 'sala deletada com sucesso';
   }
 }

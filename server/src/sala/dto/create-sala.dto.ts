@@ -11,4 +11,8 @@ export class CreateSalaDto {
   @ApiProperty()
   @IsString()
   assunto: string;
+  @ApiProperty()
+  professoresIds?: string[];
+  @ApiProperty()
+  estudantesIds?: string[];
 }

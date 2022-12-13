@@ -29,10 +29,9 @@ export class SalaController {
   findOne(@Param('id') id: string) {
     return this.salaService.findOne(id);
   }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSalaDto: UpdateSalaDto) {
-    return this.salaService.update(id, updateSalaDto);
+  @Patch()
+  update(@Body() updateSalaDto: UpdateSalaDto) {
+    return this.salaService.update(updateSalaDto);
   }
 
   @Delete(':id')
