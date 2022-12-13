@@ -7,13 +7,13 @@ import { Sala } from './entities/sala.entity';
 
 export class SalaRepository {
   private dataToReturn = {
+    estudantes: true,
+    professores: true,
     listaChamada: {
       include: {
         estudantes: true,
       },
     },
-    estudantes: true,
-    professores: true,
   };
   constructor(private readonly prismaService: PrismaService) {}
 
@@ -32,21 +32,27 @@ export class SalaRepository {
         include: this.dataToReturn,
       });
     } catch (err) {
+      console.log('rodou', err);
+
       throw new Exception(Exceptions.DatabaseException, err.message);
     }
   }
   async atualizarSala(updateData: UpdateSalaDto): Promise<Sala> {
     try {
+      const estudantesIds = updateData.estudantesIds;
+      const professoresIds = updateData.professoresIds;
+
+      delete updateData.estudantesIds;
+      delete updateData.professoresIds;
+
       return await this.prismaService.sala.update({
         where: { id: updateData.id },
         data: {
-          ...updateData,
-
           estudantes: {
-            connect: updateData.estudantesIds?.map((id) => ({ id: id })),
+            connect: estudantesIds?.map((id) => ({ id: id })),
           },
           professores: {
-            connect: updateData.professoresIds?.map((id) => ({ id: id })),
+            connect: professoresIds?.map((id) => ({ id: id })),
           },
         },
         include: this.dataToReturn,
@@ -63,7 +69,6 @@ export class SalaRepository {
         include: this.dataToReturn,
       });
     } catch (err) {
-      console.log('rodou', err);
       throw new Exception(Exceptions.DatabaseException, err.message);
     }
   }

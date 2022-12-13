@@ -29,7 +29,7 @@ model User {
 model ListaChamada {
   id          String   @id @unique
   salaID      String
-  Sala        Sala     @relation(fields: [salaID], references: [id])
+  Sala      Sala     @relation(fields: [salaID], references: [id])
   dataInicial DateTime
   dataFinal   DateTime
   estudantes  User[]
