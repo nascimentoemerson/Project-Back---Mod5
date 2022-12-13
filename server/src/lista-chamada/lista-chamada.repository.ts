@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common/decorators';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Exception } from 'src/utils/exceptions/exception';
+import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { UpdateListaChamadaDto } from './dto/update-lista-chamada.dto';
 import { ListaChamada } from './lista-chamada.entity';
 
@@ -33,19 +35,26 @@ export class ListaChamadaRepository {
     id,
     estudantesIds,
   }: UpdateListaChamadaDto): Promise<ListaChamada> {
-    return await this.prismaService.listaChamada.update({
-      where: { id: id },
-      data: {
-        estudantes: {
-          connect: estudantesIds.map((id) => {
-            return { id: id };
-          }),
+    try {
+      return await this.prismaService.listaChamada.update({
+        where: { id: id },
+        data: {
+          estudantes: {
+            connect: estudantesIds.map((id) => {
+              return { id: id };
+            }),
+          },
         },
-      },
-      include: {
-        estudantes: true,
-      },
-    });
+        include: {
+          estudantes: true,
+        },
+      });
+    } catch (error) {
+      throw new Exception(
+        Exceptions.DatabaseException,
+        'o usuário enviado não existe',
+      );
+    }
   }
 
   async todasListasChamadas(): Promise<ListaChamada[]> {

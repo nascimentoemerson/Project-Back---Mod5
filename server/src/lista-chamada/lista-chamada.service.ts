@@ -6,11 +6,14 @@ import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { CreateListaChamadaDto } from './dto/create-lista-chamada.dto';
 import { UpdateListaChamadaDto } from './dto/update-lista-chamada.dto';
 import { ListaChamada } from './lista-chamada.entity';
+import { ListaChamadaRepository } from './lista-chamada.repository';
 
 @Injectable()
 export class ListaChamadaService {
-  private _listaChamada: ListaChamada[] = [];
-  constructor(private readonly salaService: SalaService) {}
+  constructor(
+    private readonly salaService: SalaService,
+    private readonly listaChamadaRepository: ListaChamadaRepository,
+  ) {}
   async create(
     createListaChamadaDto: CreateListaChamadaDto,
   ): Promise<ListaChamada> {
@@ -31,35 +34,38 @@ export class ListaChamadaService {
       dia: diaFormatado,
     };
 
-    this._listaChamada.push(listaHoje);
-    return Promise.resolve(listaHoje);
+    return await this.listaChamadaRepository.criarListaChamada(listaHoje);
   }
 
   async findAll() {
-    return this._listaChamada;
+    return await this.listaChamadaRepository.todasListasChamadas();
   }
 
   async findOne(id: string): Promise<ListaChamada> {
-    const listaChamadaEncontrada = this._listaChamada.find(
-      (ListaChamada) => ListaChamada.id === id,
-    );
+    const listaChamadaEncontrada =
+      await this.listaChamadaRepository.listaChamadaPorId(id);
     return listaChamadaEncontrada;
   }
 
-  async update(id: number, updateListaChamadaDto: UpdateListaChamadaDto) {
-    return `This action updates a #${id} listaChamada`;
+  async update(updateListaChamadaDto: UpdateListaChamadaDto) {
+    return await this.listaChamadaRepository.atualizarListaChamada(
+      updateListaChamadaDto,
+    );
   }
 
-  async register(ListaChamadaId: string, userId: string): Promise<string> {
+  async register(
+    ListaChamadaId: string,
+    userId: string,
+  ): Promise<ListaChamada> {
     const listaChamadaEncontrada = await this.findOne(ListaChamadaId);
     const DataAtual = new Date(Date.now());
     if (DataAtual.getTime() > listaChamadaEncontrada.dataFinal.getTime()) {
       throw new Exception(Exceptions.InvalidData, 'Perdeu a hora');
     }
-    return 'Chamada Concluida';
-  }
 
-  async remove(id: number) {
-    return `This action removes a #${id} listaChamada`;
+    return await this.listaChamadaRepository.atualizarListaChamada({
+      id: ListaChamadaId,
+      estudantesIds: [userId],
+    });
   }
 }
