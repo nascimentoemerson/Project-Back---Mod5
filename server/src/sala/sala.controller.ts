@@ -11,8 +11,10 @@ import { SalaService } from './sala.service';
 import { CreateSalaDto } from './dto/create-sala.dto';
 import { UpdateSalaDto } from './dto/update-sala.dto';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('sala')
+@Controller('Sala')
+@ApiTags('Sala de Aula')
 export class SalaController {
   constructor(private readonly salaService: SalaService) {}
 
@@ -27,20 +29,36 @@ export class SalaController {
 
   @Get()
   async findAll() {
-    return await this.salaService.findAll();
+    try {
+      return await this.salaService.findAll();
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.salaService.findOne(id);
+    try {
+      return await this.salaService.findOne(id);
+    } catch (error) {
+      HandleException(error);
+    }
   }
   @Patch()
   async update(@Body() updateSalaDto: UpdateSalaDto) {
-    return await this.salaService.update(updateSalaDto);
+    try {
+      return await this.salaService.update(updateSalaDto);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    return await this.salaService.remove(id);
+    try {
+      return await this.salaService.remove(id);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 }

@@ -25,7 +25,7 @@ export class SalaService {
   }
 
   async update(updateSalaDto: UpdateSalaDto): Promise<Sala> {
-    if (!updateSalaDto.estudantesIds && updateSalaDto.professoresIds) {
+    if (!updateSalaDto.estudantesIds && !updateSalaDto.professoresIds) {
       throw new Exception(
         Exceptions.InvalidData,
         'você não enviou relacões da tabela ',
@@ -35,7 +35,11 @@ export class SalaService {
   }
 
   async remove(id: string): Promise<string> {
-    await this.salaRepository.deletarSala(id);
-    return 'sala deletada com sucesso';
+    try {
+      await this.salaRepository.deletarSala(id);
+      return 'sala deletada com sucesso';
+    } catch (error) {
+      throw new Exception(error);
+    }
   }
 }

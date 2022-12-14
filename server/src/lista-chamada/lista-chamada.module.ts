@@ -5,6 +5,8 @@ import { SalaService } from 'src/sala/sala.service';
 import { ListaChamadaRepository } from './lista-chamada.repository';
 import { DatabaseModule } from 'src/prisma/database.module';
 import { SalaRepository } from 'src/sala/sala.repository';
+import { UserRepository } from 'src/user/user.repository';
+import { UserService } from 'src/user/services/user.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +16,8 @@ import { SalaRepository } from 'src/sala/sala.repository';
     SalaService,
     ListaChamadaRepository,
     SalaRepository,
+    UserService,
+    UserRepository,
   ],
 })
 export class ListaChamadaModule {}

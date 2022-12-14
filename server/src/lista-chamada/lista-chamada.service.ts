@@ -58,14 +58,33 @@ export class ListaChamadaService {
     userId: string,
   ): Promise<ListaChamada> {
     const listaChamadaEncontrada = await this.findOne(ListaChamadaId);
+    const salaEncontrada = await this.salaService.findOne(
+      listaChamadaEncontrada.salaID,
+    );
+
     const DataAtual = new Date(Date.now());
     if (DataAtual.getTime() > listaChamadaEncontrada.dataFinal.getTime()) {
       throw new Exception(Exceptions.InvalidData, 'Perdeu a hora');
     }
 
-    return await this.listaChamadaRepository.atualizarListaChamada({
-      id: ListaChamadaId,
-      estudantesIds: [userId],
-    });
+    const EsdudanteEncontrado = new Map<string, any>();
+    for (const estudantes of salaEncontrada.estudantes) {
+      EsdudanteEncontrado.set(estudantes.id, { ...estudantes });
+    }
+
+    if (EsdudanteEncontrado.get(userId) === undefined) {
+      throw new Exception(
+        Exceptions.InvalidData,
+        'This student not found in classroom',
+      );
+    }
+    const dataToReturn =
+      await this.listaChamadaRepository.atualizarListaChamada({
+        id: ListaChamadaId,
+        estudantesIds: [userId],
+      });
+
+    delete dataToReturn.estudantes;
+    return dataToReturn;
   }
 }

@@ -4,8 +4,10 @@ import { CreateListaChamadaDto } from './dto/create-lista-chamada.dto';
 import { UpdateListaChamadaDto } from './dto/update-lista-chamada.dto';
 import { RegistroListaChamadaDto } from './dto/register-lista-chamada.dto';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('lista-chamada')
+@ApiTags('Lista de Chamada')
 export class ListaChamadaController {
   constructor(private readonly listaChamadaService: ListaChamadaService) {}
 
