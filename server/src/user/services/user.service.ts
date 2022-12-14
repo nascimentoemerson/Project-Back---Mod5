@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
+  prisma: any;
   constructor(private readonly userRepository: UserRepository) {}
 
   async createUser(user: UserInputDTO): Promise<IUserEntity> {
@@ -46,7 +47,12 @@ export class UserService {
   }
 
   async getUserById(userId: string): Promise<IUserEntity> {
-    const foundUser = await this.userRepository.findUserById(userId);
+    const foundUser = await this.userRepository.findUserByEmail(userId);
     return foundUser;
+  }
+
+  async findUserByEmail(email: string): Promise<IUserEntity> {
+    const user = await this.userRepository.findUserByEmail(email);
+    return user;
   }
 }

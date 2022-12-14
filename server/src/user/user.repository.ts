@@ -56,14 +56,17 @@ export class UserRepository {
     }
   }
 
-  async findUserById(id: string): Promise<IUserEntity> {
+  async findUserByEmail(email: string): Promise<IUserEntity> {
     try {
-      const UserById = await this.prisma.user.findUniqueOrThrow({
-        where: { id: id },
+      const foundUser = await this.prisma.user.findUniqueOrThrow({
+        where: { email: email },
       });
-      return UserById;
-    } catch (error) {
-      throw new Exception(Exceptions.DatabaseException);
+      return foundUser;
+    } catch (err) {
+      throw new Exception(
+        Exceptions.DatabaseException,
+        'user not found with this email',
+      );
     }
   }
 }
