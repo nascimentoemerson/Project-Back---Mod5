@@ -6,6 +6,7 @@ import { UserRepository } from '../user.repository';
 import { Injectable } from '@nestjs/common';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { Exception } from 'src/utils/exceptions/exception';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -19,6 +20,9 @@ export class UserService {
         'Password must be at least 7 characters',
       );
     }
+    const hashedPassword = await bcrypt.hash(user.password, 10);
+    userEntity.password = hashedPassword;
+
     const createdUser = await this.userRepository.createUser(userEntity);
     return createdUser;
   }
