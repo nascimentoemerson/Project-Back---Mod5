@@ -7,7 +7,7 @@ import {
   Patch,
   Post,
   Res,
-  BadRequestException,
+  UseGuards,
 } from '@nestjs/common';
 
 import { IUserEntity } from './entities/user.entity';
@@ -16,13 +16,17 @@ import { UserInputDTO } from './services/dto/userInput.dto';
 import { UserService } from './services/user.service';
 import { Response } from 'express';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 
 @Controller('user')
 @ApiTags('Usuários')
 export class Usercontroller {
   constructor(private service: UserService) {}
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Get()
   async getAllUsers(): Promise<IUserEntity[]> {
     return await this.service.getAllUsers();
@@ -38,7 +42,7 @@ export class Usercontroller {
 
   @Post()
   async createUSer(
-    @Body() { cpf, email, password, name, role }: UserInputDTO,
+    @Body() { cpf, email, password, name }: UserInputDTO,
     @Res() response: Response,
   ) {
     try {
@@ -47,14 +51,14 @@ export class Usercontroller {
         email,
         password,
         name,
-        role,
       });
       response.status(201).send(result);
     } catch (error) {
       HandleException(error);
     }
   }
-
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Patch()
   async updateUser(
     @Body() userData: PartialUserInputDTO,
@@ -66,6 +70,8 @@ export class Usercontroller {
     }
   }
 
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   @Delete(':id')
   async deleteUserById(@Param('id') userId: string): Promise<string> {
     try {

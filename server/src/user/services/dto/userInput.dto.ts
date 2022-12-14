@@ -17,8 +17,4 @@ export class UserInputDTO {
   @ApiProperty()
   @IsString()
   cpf: string;
-
-  @ApiProperty()
-  @IsString()
-  role: string;
 }

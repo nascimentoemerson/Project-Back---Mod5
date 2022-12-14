@@ -3,4 +3,5 @@ import { UserInputDTO } from './userInput.dto';
 
 export class PartialUserInputDTO extends PartialType(UserInputDTO) {
   id: string;
+  role?: string;
 }

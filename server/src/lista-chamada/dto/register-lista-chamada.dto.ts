@@ -5,8 +5,4 @@ export class RegistroListaChamadaDto {
   @ApiProperty()
   @IsString()
   listaChamadaId: string;
-
-  @ApiProperty()
-  @IsString()
-  userId: string;
 }
